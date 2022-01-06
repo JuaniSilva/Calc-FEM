@@ -1,0 +1,53 @@
+:root {
+  /* Theme N°1 */
+  /* Backgorunds */
+  --th1-main-bg: hsl(222, 26%, 31%);
+  --th1-toggle-bg: hsl(223, 31%, 20%);
+  --th1-screen-bg: hsl(224, 36%, 15%);
+  /* Keys */
+  --th1-desaturated-blue: hsl(225, 21%, 49%);
+  --th1-desaturated-blue-shadow: hsl(224, 28%, 35%);
+  --th1-red: hsl(6, 63%, 50%);
+  --th1-dark-red: hsl(6, 70%, 34%);
+  --th1-light-orange: hsl(30, 25%, 89%);
+  --th1-grayish-orange: hsl(28, 16%, 65%);
+  /* Text */
+  --th1-grayish-blue: hsl(221, 14%, 31%);
+
+  /* Theme N°2 */
+  /* Backgruonds */
+  --th2-main-bg: hsl(0, 0%, 90%);
+  --th2-toggle-bg: hsl(0, 5%, 81%);
+  --th2-screen-bg: hsl(0, 0%, 93%);
+  /* Keys */
+  --th2-key-bg: hsl(185, 42%, 37%);
+  --th2-key-shadow: hsl(185, 58%, 25%);
+  --th2-orange: hsl(25, 98%, 40%);
+  --th2-dark-orange: hsl(25, 99%, 27%);
+  --th2-grayish-yellow: hsl(45, 7%, 89%);
+  --th2-grayish-orange: hsl(35, 11%, 61%);
+  /* Text */
+  --th2-dark-grayish-yellow: hsl(60, 10%, 19%);
+
+  /* Theme N°3 */
+  /* Backgruonds */
+  --th3-main-bg: hsl(268, 75%, 9%);
+  --th3-toggle-bg: hsl(268, 71%, 12%);
+  /* Keys */
+  --th3-dark-violet: hsl(281, 89%, 26%);
+  --th3-magenta: hsl(285, 91%, 52%);
+  --th3-pure-cyan: hsl(176, 100%, 44%);
+  --th3-soft-cyan: hsl(177, 92%, 70%);
+  --th3-very-dark-violet: hsl(268, 47%, 21%);
+  --th3-dark-magenta: hsl(290, 70%, 36%);
+  /* Text */
+  --th3-light-yellow: hsl(52, 100%, 62%);
+  --th3-dark-blue: hsl(198, 20%, 13%);
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
