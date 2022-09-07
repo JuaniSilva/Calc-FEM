@@ -11,6 +11,12 @@ export default {
       savedValue: 0,
       operator: "",
       theme: 1,
+      inputs:[ 
+          7,8,9,"del",
+          4,5,6,"+",
+          1,2,3,"-",
+          ".","0","/","x",
+          "reset","equal"]
     };
   },
   methods: {
@@ -55,16 +61,17 @@ export default {
       this.initialValue = "0";
       this.operator = value;
     },
+    calculate:(a,str,b)=>{
+       switch(str){
+          case '+': return a + b;
+          case '-': return a - b;
+          case '/': return  a / b;
+          case 'x': return a * b;
+          default: return '0';
+        }
+    },
     equal() {
-      if (this.operator == "+") {
-        this.initialValue = `${Number(this.initialValue) + this.savedValue}`;
-      } else if (this.operator == "-") {
-        this.initialValue = `${Number(this.initialValue) - this.savedValue}`;
-      } else if (this.operator == "/") {
-        this.initialValue = `${Number(this.initialValue) / this.savedValue}`;
-      } else if (this.operator == "x") {
-        this.initialValue = `${Number(this.initialValue) * this.savedValue}`;
-      }
+	this.initialValue = this.calculate(this.savedValue, this.operator, Number(this.initialValue));      
     },
     changeTheme() {
       this.theme++;
@@ -83,9 +90,9 @@ export default {
   },
   computed: {
     screenValue() {
-      return this.initialValue
-        .toString()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+	return this.initialValue
+		.toString()
+		.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     },
   },
 };
@@ -110,30 +117,14 @@ export default {
       </div>
     </header>
     <div class="container__screen">{{ screenValue }}</div>
-    <div class="container__buttons" @click="getValue">
-      <!-- Row -->
-      <Button text="7" class="btn" value="7" />
-      <Button text="8" class="btn" value="8" />
-      <Button text="9" class="btn" value="9" />
-      <Button text="DEL" class="btn del" value="del" />
-      <!-- Row -->
-      <Button text="4" class="btn" value="4" />
-      <Button text="5" class="btn" value="5" />
-      <Button text="6" class="btn" value="6" />
-      <Button text="+" class="btn" value="+" />
-      <!-- Row -->
-      <Button text="1" class="btn" value="1" />
-      <Button text="2" class="btn" value="2" />
-      <Button text="3" class="btn" value="3" />
-      <Button text="-" class="btn" value="-" />
-      <!-- Row -->
-      <Button text="." class="btn" value="." />
-      <Button text="0" class="btn" value="0" />
-      <Button text="/" class="btn" value="/" />
-      <Button text="x" class="btn" value="x" />
-      <!-- Row -->
-      <Button text="RESET" class="btn reset" value="reset" />
-      <Button text="=" class="btn equal" value="equal" />
+    <div class="container__buttons" @click="getValue"> 
+      <Button 
+	  v-for="(input, i) in inputs"
+	  :key="i"
+	  :text="input"
+	  :class="input.toString().lenght>1?`btn ${input} uppercase`:'btn'"
+	  :value="input" 
+      />   
     </div>
   </div>
 </template>
@@ -224,6 +215,9 @@ body {
   gap: 14px;
   background: var(--th1-toggle-bg);
   padding: 24px;
+}
+.uppercase {
+  text-transform : uppercase;
 }
 .btn {
   min-width: 40px;
